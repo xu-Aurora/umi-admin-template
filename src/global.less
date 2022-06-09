@@ -1,0 +1,73 @@
+// 全局样式
+
+
+/* 标签初始化 */
+HTML, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, form {
+  border: none;
+  font-family: "微软雅黑", "黑体", "宋体";
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+}
+a:link, a:visited, a:hover, a:active {
+  color: #fff;
+}
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+input {
+  -webkit-appearance: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+input::-webkit-input-placeholder, input::-ms-input-placeholder, input::-moz-placeholder {
+  color: #ccc;
+}
+input[type=submit], input[type=button] {
+  cursor: pointer;
+}
+button[disabled], input[disabled] {
+  cursor: default;
+}
+img {
+  border: none;
+  vertical-align: middle;
+}
+ul, ol, li {
+  list-style-type: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.ant-layout-content {
+  &>div {
+    height: 100%;
+  }
+}
+
+// 水平垂直居中
+.flex_c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

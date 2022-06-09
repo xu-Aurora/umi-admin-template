@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // 指定 ECMAScript 目标版本: 'ES3' (default), 'ES5', 'ES6'/'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'
+    "module": "esnext", // 指定使用模块: 'commonjs', 'amd', 'system', 'umd' or 'es2015'
+    "moduleResolution": "node", // 选择模块解析策略： 'node' (Node.js) or 'classic' (TypeScript pre-1.6)
+    "importHelpers": true, // 从 tslib 导入辅助工具函数
+    "jsx": "react-jsx", 
+    "esModuleInterop": true,
+    "allowJs": true, // 允许编译 javascript 文件
+    "checkJs": true, // 报告 javascript 文件中的错误
+    "noUnusedLocals": true, // 有未使用的变量时，抛出错误
+    "sourceMap": true, // 生成相应的 '.map' 文件
+    "baseUrl": "./", // 模块名到基于 baseUrl 的路径映射的列表
+    "outDir": "./src", // 指定输出目录
+    "rootDir": "./", // 用来控制输出目录结构 --outDir
+    "strict": true, // 启用所有严格类型检查选项
+    "strictNullChecks": false, // 启用严格的 null 检查
+    "noImplicitThis": false, // 当 this 表达式值为 any 类型的时候，生成一个错误
+    "experimentalDecorators": true, // 启用装饰器
+    "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "downlevelIteration": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      // 模块名到基于 baseUrl 的路径映射的列表
+      "@/*": ["src/*"],
+      "@@/*": ["./src/.umi/*"]
+    }
+  },
+  "rules": {
+    "member-access": false,
+    "ordered-imports": false,
+    "quotemark": false,
+    "no-console": false,
+    "semicolon": false,
+    "jsx-no-lambda": false,
+    "no-unused-vars": false,
+    "@typescript-eslint/no-unused-vars": [
+      false
+    ]
+  },
+  "exclude": [
+    // 忽略编译的文件
+    "public",
+    "dist",
+    "build",
+    "node_modules"
+  ],
+  "extends": "./jsconfig.json"
+}
