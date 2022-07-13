@@ -1,6 +1,3 @@
-import routes from '@/components/menus'
-import ErrorPage from '@/pages/403'
-
 /**
  * 判断是否为空
  */
@@ -25,38 +22,6 @@ function isEmpty(value: any) {
 			return true
 	}
 	return false
-}
-
-/**
- * 以递归的方式展平react router数组
- * @param {object[]} arr 路由数组
- * @param {string} child 需要递归的字段名
- */
-const flattenRoutes = (arr: CommonObjectType<unknown>[]) =>
-  arr.reduce((prev: CommonObjectType<unknown>[], item: CommonObjectType<unknown>) => {
-    if (Array.isArray(item.routes)) {
-      prev.push(item)
-    }
-    return prev.concat(
-      Array.isArray(item.routes) ? flattenRoutes(item.routes) : item
-    )
-  },
-  []
-)
-
-/**
- * 根据路径获取路由的name和key
- * @param {string} path 路由
- */
-const getKeyName = (path: string = '/403') => {
-  const truePath = path.split('?')[0]
-  const curRoute = flattenRoutes(routes).filter(
-    (item: { path: string | string[] }) => item.path.includes(truePath)
-  )
-  if (!curRoute[0])
-    return { title: '暂无权限', tabKey: '403', component: ErrorPage }
-  const { name, key, component } = curRoute[0]
-  return { title: name, tabKey: key, component }
 }
 
 
@@ -179,8 +144,6 @@ const regex = (value: string) => {
 
 export {
   isEmpty,
-  flattenRoutes,
-  getKeyName,
   base64ToExcel,
   formatPrice,
   splitThousand,

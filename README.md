@@ -30,6 +30,4 @@ umi 里面的 useRequest 要求相应的结果必须是这样 {data: {xxx}} ，�
 
 -[ProComponents](https://procomponents.ant.design/docs/)
 
--[XRender](https://xrender.fun/)
-
 -[umi-request](https://github.com/umijs/umi-request/blob/master/README_zh-CN.md)

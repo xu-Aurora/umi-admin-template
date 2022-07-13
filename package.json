@@ -20,12 +20,15 @@
     ]
   },
   "dependencies": {
+    "@ant-design/pro-form": "^1.70.2",
     "@ant-design/pro-layout": "^6.38.6",
+    "@ant-design/pro-table": "^2.77.2",
     "@types/classnames": "^2.3.1",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
     "classnames": "^2.3.1",
     "dayjs": "^1.11.2",
+    "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "qs": "^6.10.3",
     "react": "18.x",

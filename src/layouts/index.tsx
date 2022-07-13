@@ -2,15 +2,16 @@ import { UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HeartOutlined, Smil
 import ProLayout from '@ant-design/pro-layout';
 import type { MenuDataItem } from '@ant-design/pro-layout';
 import { Avatar, ConfigProvider } from 'antd';
-import { useState, useEffect, useRef, Component } from 'react';
+import { useState } from 'react';
 import { history, useLocation, withRouter } from 'umi';
 import Menus from '@/components/menus';
-import TabView from '@/components/TabView';
 import defaultSetting from './defaultSetting';
-import { getKeyName } from '@/assets/utils';
 import moment from 'moment';
 import zhCN from 'antd/lib/locale/zh_CN';
 import 'moment/locale/zh-cn';
+
+import { TabLayout } from '@/components/PageTab';
+
 
 moment.locale('en');
 
@@ -27,13 +28,6 @@ const loopMenuItem = (menus: MenuDataItem[]): MenuDataItem[] =>
   }));
 
 
-interface PanesItemProps {
-  title: string;
-  content: Component;
-  key: string;
-  closable: boolean;
-  path: string;
-}
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -43,44 +37,13 @@ const waitTime = (time: number = 100) => {
   });
 };
 
-const noNewTab = ['/login', '/403'] // 不需要新建 tab的页面
 
-const BaseLayout = () => {
+const BaseLayout = (props) => {
 
-  const { pathname, search } = useLocation()
+  const { pathname } = useLocation()
 
-  const [tabActiveKey, setTabActiveKey] = useState<string>('home')
-  const [panesItem, setPanesItem] = useState<PanesItemProps>({
-    title: '',
-    content: null,
-    key: '',
-    closable: false,
-    path: ''
-  })
-  const pathRef: RefType = useRef<string>('')
   const [collapsed, setCollapsed] = useState(true);
 
-  useEffect(() => {
-    const { tabKey, title, component: Content } = getKeyName(pathname)
-    // 新tab已存在或不需要新建tab，return
-    if (pathname === pathRef.current || noNewTab.includes(pathname)) {
-      setTabActiveKey(tabKey)
-      return
-    }
-
-    // 记录新的路径，用于下次更新比较
-    const newPath = search ? pathname + search : pathname
-    pathRef.current = newPath
-
-    setPanesItem({
-      title,
-      content: Content,
-      key: tabKey,
-      closable: tabKey !== 'home',
-      path: newPath
-    })
-    setTabActiveKey(tabKey)
-  }, [pathname, search])
 
   const pagePush = (path: string) => {
     history.push(path);
@@ -132,11 +95,7 @@ const BaseLayout = () => {
         }}
       >
         <ConfigProvider locale={zhCN}>
-          <TabView
-            defaultActiveKey="home"
-            panesItem={panesItem}
-            tabActiveKey={tabActiveKey}
-          />
+          <TabLayout {...props} />
         </ConfigProvider>
       </ProLayout>
     </div>
